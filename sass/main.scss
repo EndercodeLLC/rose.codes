@@ -1,0 +1,38 @@
+@import "fonts";
+
+:root {
+  color-scheme: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-size: 16px;
+  margin:0 auto;
+  padding: 0 10px;
+  max-width: 800px;
+  background-color: NavajoWhite;
+  color: #222;
+}
+
+pre {
+  padding: 30px;
+}
+code {
+  font-family: 'Cousine', monospace;
+}
+
+@media (min-width: 1440px) {
+  body {
+    max-width: 52.7%;
+  }
+}
+
+@media (max-width: 800px) {
+  body pre {
+    margin: 0 -10px;
+  }
+}
