@@ -8,6 +8,13 @@
 </head>
 
 <body>
+  <header>
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <a itemprop="url" href="/"><span itemprop="name">Home</span></a>
+      <a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a>
+      <a itemprop="url" href="/tags"><span itemprop="name">Tags</span></a>
+    </nav>
+  </header>
   <section class="section">
     <div class="container">
       {% block content %} {% endblock %}
