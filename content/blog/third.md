@@ -1,6 +1,9 @@
 +++
 title = "My third post."
 date = 2021-10-29
+[taxonomies]
+tags=["Guillermo Del Toro","Something"]
+categories=["Thriller","Weird"]
 +++
 
 This is my second blog post.

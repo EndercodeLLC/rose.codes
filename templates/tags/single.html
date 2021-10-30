@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>{{ term.name }}</h1>
+
+    {% for page in term.pages %}
+        {{ page.content | safe }}
+    {% endfor %}
+    
+{% endblock content %}

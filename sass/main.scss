@@ -47,12 +47,12 @@ a[target="_blank"]::after {
 
 header {
   padding: 2em 0 0;
-}
-header nav a {
-  padding-left: 2em;
-}
-header nav a:first-child {
-  padding-left: 0;
+  nav a {
+    padding-left: 2em;
+  }
+  nav a:first-child {
+    padding-left: 0;
+  }
 }
 
 pre {
