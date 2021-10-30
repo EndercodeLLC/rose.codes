@@ -10,12 +10,39 @@
 
 body {
   font-family: 'Atkinson Hyperlegible', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   margin:0 auto;
   padding: 0 10px;
   max-width: 800px;
-  background-color: NavajoWhite;
   color: #222;
+  background-color: NavajoWhite;
+
+  .left_background {
+    width: calc((100% - 840px) / 2 + 1.5vw);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    background-image: url("/icons/background.svg");
+    background-size: 13vw;
+    background-position: right;
+  }
+
+  .right_background {
+    width: calc((100% - 840px) / 2);
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    background-image: url("/icons/background.svg");
+    background-size: 13vw;
+    background-position: left;
+  }
+}
+
+a[target="_blank"]::after {
+  content: "\00a0\00a0\00a0";
+  /*padding-left: 0.8em;*/
+  background-image: url("/icons/external-link.svg");
+  background-repeat: no-repeat;
+  background-size: 0.7em;
+  background-position: 0.1em 0.3em;
 }
 
 pre {
@@ -23,6 +50,22 @@ pre {
 }
 code {
   font-family: 'Cousine', monospace;
+}
+
+/*p.subtitle + p::first-letter {
+  font-size: 250%;
+  float: left;
+  line-height: 0.9;
+  margin-right: 0.1em;
+}*/
+
+span.icon {
+  display: inline-block;
+  height:1em;
+  width:1em;
+  vertical-align: text-bottom;
+  position: relative;
+  bottom: 0.16em;
 }
 
 @media (min-width: 1440px) {
