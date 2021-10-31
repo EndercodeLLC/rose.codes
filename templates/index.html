@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1 class="homepage_title">
-    {{ config.title }}
-  </h1>
-  <p>{{ config.description }}</p>
+  <h1>Latest Blog Posts</h1>
   {% set section = get_section(path="blog/_index.md") %}
   {% for page in section.pages %}
     {% if loop.index0 < 5 %}

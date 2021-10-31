@@ -10,7 +10,11 @@
 
 <body>
   <header>
-    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <h1 class="top_title">
+      <a href="/">{{ config.title }}</a>
+    </h1>
+    <p class="top_description">{{ config.description }}</p>
+    <nav class="top" itemscope itemtype="http://schema.org/SiteNavigationElement">
       <span {% if current_path == "/" %} class="active" {% endif %} ><a itemprop="url" href="/"><span itemprop="name">Home</span></a></span>
       <span {% if current_path == "/blog/" %} class="active" {% endif %} ><a itemprop="url" href="/blog"><span itemprop="name">Blog</span></a></span>
       <span {% if current_path == "/categories/" %} class="active" {% endif %} ><a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a></span>

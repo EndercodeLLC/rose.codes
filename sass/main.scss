@@ -13,12 +13,12 @@ body {
   font-size: 20px;
   margin:0 auto;
   padding: 0 10px;
-  max-width: 800px;
+  max-width: 1000px;
   color: #222;
   background-color: NavajoWhite;
 
   .left_background {
-    width: calc((100% - 840px) / 2 + 1.5vw);
+    width: calc((100% - 1040px) / 2 + 1.5vw);
     position: fixed;
     top: 0; left: 0; bottom: 0;
     background-image: url("/icons/background.svg");
@@ -27,7 +27,7 @@ body {
   }
 
   .right_background {
-    width: calc((100% - 840px) / 2);
+    width: calc((100% - 1040px) / 2);
     position: fixed;
     top: 0; right: 0; bottom: 0;
     background-image: url("/icons/background.svg");
@@ -53,7 +53,7 @@ a.continue::after {
 }
 
 header {
-  padding: 2em 0 0;
+  padding: 0.5em 0 0;
   nav > span {
     padding-left: 2em;
   }
@@ -99,17 +99,31 @@ span.icon {
   bottom: 0.16em;
 }
 
-h1.homepage_title::before {
-  content: "\00a0\00a0\00a0";
-  background-image: url("/icons/flower.svg");
+h1.top_title {
+  margin-bottom: 0;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+h1.top_title a::before {
+  content: "\00a0\00a0\00a0\00a0";
+  background-image: url("/icons/laptop.svg");
   background-repeat: no-repeat;
   background-size: 0.8em;
   background-position: 0.1em 0.2em;
 }
 
-nav.pagination {
+p.top_description {
+  margin-top: 0;
+}
 
-  margin-top: 2em;
+nav.top {
+  padding: 1em 0 2em;
+  border-bottom: 1em dotted #d7bfad;
+}
+
+nav.pagination {
 
   a.previous::before {
     content: "\00a0\00a0\00a0";
@@ -129,6 +143,8 @@ nav.pagination {
 
 .copyright {
   margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1em dotted #d7bfad;
 }
 
 h2 {
@@ -143,13 +159,14 @@ ul.terms {
   list-style: none;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1536px) {
   body {
-    max-width: 52.7%;
+    /*max-width: 52.7%;*/
+    max-width: 67.1%;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   body pre {
     margin: 0 -10px;
   }
