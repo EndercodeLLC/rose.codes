@@ -2,9 +2,8 @@
 
 {% block content %}
 <h1 class="title">
-  {{ section.title }}
+  {{ section.title }}{% if paginator.current_index > 1 %} &mdash; Page {{ paginator.current_index }}{% endif %}
 </h1>
-{% set section = get_section(path="blog/_index.md") %}
 {% for page in paginator.pages %}
   {% if loop.first %}
     <br>
@@ -16,10 +15,10 @@
 
 <nav class="pagination">
     {% if paginator.previous %}
-        <a class="previous" href="{{ paginator.previous }}">‹ Previous</a>
+        <a class="previous" href="{{ paginator.previous }}">Previous</a>
     {% endif %}
     {% if paginator.next %}
-        <a class="next" href="{{ paginator.next }}">Next ›</a>
+        <a class="next" href="{{ paginator.next }}">Next</a>
     {% endif %}
 </nav>
 

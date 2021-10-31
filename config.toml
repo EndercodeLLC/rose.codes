@@ -19,8 +19,8 @@ minify_html = false
 
 # The taxonomies to be rendered for the site and their configuration.
 taxonomies = [
-  {name = "categories", feed = true},
-  {name = "tags", feed = true},
+  {name = "categories", feed = true, paginate_by = 5},
+  {name = "tags", feed = true, paginate_by = 5},
 ]
 
 # Whether to build a search index to be used later on by a JavaScript library

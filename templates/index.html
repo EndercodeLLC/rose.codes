@@ -7,11 +7,14 @@
   <p>{{ config.description }}</p>
   {% set section = get_section(path="blog/_index.md") %}
   {% for page in section.pages %}
-    {% if loop.first %}
-      <br>
-    {% else %}
-      <br><br>
+    {% if loop.index0 < 5 %}
+      {% if loop.first %}
+        <br>
+      {% else %}
+        <br><br>
+      {% endif %}
+      {{ macros::preview(page=page) }}
     {% endif %}
-    {{ macros::preview(page=page) }}
   {% endfor %}
+  <h3><a href="/blog/page/2">Continue browsing blog posts.</a></h3>
 {% endblock content %}

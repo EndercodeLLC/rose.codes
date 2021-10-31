@@ -106,6 +106,30 @@ h1.homepage_title::before {
   background-position: 0.1em 0.2em;
 }
 
+nav.pagination {
+
+  margin-top: 2em;
+
+  a.previous::before {
+    content: "\00a0\00a0\00a0";
+    background-image: url("/icons/arrow-left.svg");
+    background-repeat: no-repeat;
+    background-size: 0.7em;
+    background-position: 0.1em 0.3em;
+  }
+  a.next::after {
+    content: "\00a0\00a0\00a0";
+    background-image: url("/icons/arrow-right.svg");
+    background-repeat: no-repeat;
+    background-size: 0.7em;
+    background-position: 0.1em 0.3em;
+  }
+}
+
+.copyright {
+  margin-top: 2em;
+}
+
 h2 {
   font-size: 1.1em;
 }
