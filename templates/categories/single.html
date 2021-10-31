@@ -2,9 +2,14 @@
 
 {% block content %}
 
-  <h1>{{ term.name }}</h1>
+  <h1>Category: {{ term.name }}</h1>
 
   {% for page in term.pages %}
+    {% if loop.first %}
+      <br>
+    {% else %}
+      <br><br>
+    {% endif %}
     {{ macros::preview(page=page) }}
   {% endfor %}
 

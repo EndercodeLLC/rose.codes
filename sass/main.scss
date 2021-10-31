@@ -44,6 +44,14 @@ a[target="_blank"]::after {
   background-position: 0.1em 0.3em;
 }
 
+a.continue::after {
+  content: "\00a0\00a0\00a0";
+  background-image: url("/icons/arrow-right.svg");
+  background-repeat: no-repeat;
+  background-size: 0.7em;
+  background-position: 0.1em 0.3em;
+}
+
 header {
   padding: 2em 0 0;
   nav > span {

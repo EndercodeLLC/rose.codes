@@ -8,6 +8,6 @@
   </h2>
   <p class="subtitle"><strong>{{ macros::icon(name="clock") }} {{ page.reading_time }} minute read &nbsp; {{ macros::icon(name="published") }} Published {{ page.date }}</strong></p>
   {{ page.summary | safe }}
-  <a href="{{ page.permalink }}#continue-reading">Continue Reading</a>
+  <a class="continue" href="{{ page.permalink }}#continue-reading">Continue Reading</a>
 </div>
 {% endmacro preview %}

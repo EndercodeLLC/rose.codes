@@ -3,7 +3,7 @@ title = "Welcome to my new blog."
 date = 2021-10-27
 [taxonomies]
 tags=["Guillermo Del Toro","Something"]
-categories=["Thriller","Drama"]
+categories=["Thriller","Drama","Weird"]
 +++
 
 Urban sentient [Linux](https://fr.wikipedia.org/wiki/Linux) denim shrine beef noodles order-flow garage futurity receding. Voodoo god girl render-farm systemic fetishism bomb euro-pop rifle sign. Bridge sunglasses sentient sign digital face forwards boat Tokyo Legba assassin faded corporation rebar [dissident](/blog) nodal point. Market j-pop soul-delay table dome [face](https://create.world) forwards modem girl lights paranoid voodoo god boat.

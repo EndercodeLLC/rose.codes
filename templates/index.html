@@ -7,7 +7,11 @@
   <p>{{ config.description }}</p>
   {% set section = get_section(path="blog/_index.md") %}
   {% for page in section.pages %}
-    <br>
+    {% if loop.first %}
+      <br>
+    {% else %}
+      <br><br>
+    {% endif %}
     {{ macros::preview(page=page) }}
   {% endfor %}
 {% endblock content %}
