@@ -3,23 +3,33 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MyBlog</title>
+  <title>{{ config.title }}</title>
   <link rel="stylesheet" href="/main.css">
 </head>
 
 <body>
   <header>
     <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-      <a itemprop="url" href="/"><span itemprop="name">Home</span></a>
-      <a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a>
-      <a itemprop="url" href="/tags"><span itemprop="name">Tags</span></a>
+      <span {% if current_path == "/" %} class="active" {% endif %} ><a itemprop="url" href="/"><span itemprop="name">Home</span></a></span>
+      <span {% if current_path == "/blog/" %} class="active" {% endif %} ><a itemprop="url" href="/blog"><span itemprop="name">Blog</span></a></span>
+      <span {% if current_path == "/categories/" %} class="active" {% endif %} ><a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a></span>
+      <span {% if current_path == "/tags/" %} class="active" {% endif %} ><a itemprop="url" href="/tags"><span itemprop="name">Tags</span></a></span>
     </nav>
   </header>
-  <section class="section">
-    <div class="container">
-      {% block content %} {% endblock %}
-    </div>
+  <section class="content">
+    {% block content %} {% endblock %}
   </section>
+  {% if page %}
+    {% set this_year = page.year %}
+  {% else %}
+    {% set section = get_section(path="blog/_index.md") %}
+    {% for page in section.pages %}
+      {% if loop.first %}
+        {% set_global this_year = page.year %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  <p class="copyright"><small>&copy; {{ this_year }} <a href="/">Rose.Codes</a>. Part of the <a rel="noopener" target="_blank" href="https://www.endercode.com">Endercode</a> famliy.</small></p>
   <div class="left_background"></div>
   <div class="right_background"></div>
 </body>

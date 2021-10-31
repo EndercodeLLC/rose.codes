@@ -38,7 +38,6 @@ body {
 
 a[target="_blank"]::after {
   content: "\00a0\00a0\00a0";
-  /*padding-left: 0.8em;*/
   background-image: url("/icons/external-link.svg");
   background-repeat: no-repeat;
   background-size: 0.7em;
@@ -47,11 +46,24 @@ a[target="_blank"]::after {
 
 header {
   padding: 2em 0 0;
-  nav a {
+  nav > span {
     padding-left: 2em;
   }
-  nav a:first-child {
+  nav > span:first-child {
     padding-left: 0;
+  }
+  nav > span::after {
+    content: "\00a0\00a0\00a0";
+  }
+  nav > span.active::after {
+    content: "";
+  }
+  nav > span.active a::after {
+    content: "\00a0\00a0\00a0";
+    background-image: url("/icons/arrow-left.svg");
+    background-repeat: no-repeat;
+    background-size: 0.7em;
+    background-position: 0.1em 0.3em;
   }
 }
 
@@ -76,6 +88,21 @@ span.icon {
   vertical-align: text-bottom;
   position: relative;
   bottom: 0.16em;
+}
+
+h1.homepage_title::before {
+  content: "\00a0\00a0\00a0";
+  background-image: url("/icons/flower.svg");
+  background-repeat: no-repeat;
+  background-size: 0.8em;
+  background-position: 0.1em 0.2em;
+}
+
+h2 {
+  font-size: 1.1em;
+}
+.preview {
+  /*font-size: 0.9em;*/
 }
 
 @media (min-width: 1440px) {

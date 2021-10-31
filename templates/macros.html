@@ -1,1 +1,13 @@
-{% macro icon(name) %}<span class="icon" style="background-image: url('/icons/{{name}}.svg');"></span>{% endmacro icon %}
+{% macro icon(name) %}
+<span class="icon" style="background-image: url('/icons/{{name}}.svg');"></span>
+{% endmacro icon %}
+{% macro preview(page) %}
+<div class="preview">
+  <h2 class="title">
+    <a href="/blog/{{ page.slug }}">{{ page.title }}</a>
+  </h2>
+  <p class="subtitle"><strong>{{ macros::icon(name="clock") }} {{ page.reading_time }} minute read &nbsp; {{ macros::icon(name="published") }} Published {{ page.date }}</strong></p>
+  {{ page.summary | safe }}
+  <a href="{{ page.permalink }}#continue-reading">Continue Reading</a>
+</div>
+{% endmacro preview %}

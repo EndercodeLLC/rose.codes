@@ -5,7 +5,7 @@
     <h1>Categories</h1>
 
     {% if terms %}
-        <ul>
+        <ul class="terms">
             {% for term in terms %}
                 <li>
                     <a href="{{ term.permalink | safe }}">{{ term.name }}</a>({{ term.pages | length }})
@@ -13,5 +13,5 @@
             {% endfor %}
         </ul>
     {% endif %}
-    
+
 {% endblock content %}

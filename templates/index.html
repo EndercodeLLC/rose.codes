@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  This is my blog made with Zola.
-</h1>
-<p>Click <a href="/blog/">here</a> to see my posts.</p>
+  <h1 class="homepage_title">
+    {{ config.title }}
+  </h1>
+  <p>{{ config.description }}</p>
+  {% set section = get_section(path="blog/_index.md") %}
+  {% for page in section.pages %}
+    <br>
+    {{ macros::preview(page=page) }}
+  {% endfor %}
 {% endblock content %}
