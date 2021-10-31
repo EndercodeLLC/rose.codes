@@ -111,7 +111,7 @@ I actually read this book a couple years ago. Here are the lessons that I still 
 
 I recommend this book to any American sick of the default diet and behaviors that our culture tries to make you emulate. If you want to take a step toward being more intentional in your self-care, this book is an easy read, and a fascinating glimpse into some unique and positive aspects of Finnish culture.
 
-Buy the book with this link and I'll get a small commision, at no extra cost to you.
+If you buy the book with this link I'll get a small commision.
 
 <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rosecodes-20&marketplace=amazon&amp;region=US&placement=0143132997&asins=0143132997&linkId=89e97ece9b55442935b3d0397f941d70&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
     </iframe>
