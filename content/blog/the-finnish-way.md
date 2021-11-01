@@ -113,5 +113,4 @@ I recommend this book to any American sick of the default diet and behaviors tha
 
 If you buy the book with this link I'll get a small commision.
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=rosecodes-20&marketplace=amazon&amp;region=US&placement=0143132997&asins=0143132997&linkId=89e97ece9b55442935b3d0397f941d70&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
-    </iframe>
+[The Finnish Way: Finding Courage, Wellness, and Happiness Through the Power of Sisu](https://www.amazon.com/gp/product/0143132997/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0143132997&linkCode=as2&tag=rosecodes-20&linkId=d9a5eefa539376539ec31731e6ac1acf)
