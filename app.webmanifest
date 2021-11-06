@@ -1,0 +1,12 @@
+{
+  "name": "Rose.Codes",
+  "short_name": "Rose.Codes",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Thoughts on everything. By a programmer.",
+  "icons": [
+    { "src": "/icons/favicons/laptop_192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icons/favicons/laptop_512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

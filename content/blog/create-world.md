@@ -15,12 +15,12 @@ Here is the [GitHub Page](https://github.com/rowlandrose/create.world).
 
 Here are preview images of the kind of maps you can generate with this tool:
 
-![Small version](/images/jrpg-map-1.png)
-![Large version](/images/jrpg-map-2.png)
+![Small version](/images/jrpg/map-1.png)
+![Large version](/images/jrpg/map-2.png)
 
 And here is a sample closeup:
 
-![Closeup](/images/jrpg-closeup.png)
+![Closeup](/images/jrpg/closeup.png)
 
 ## Update 2020-11-18: 
 
