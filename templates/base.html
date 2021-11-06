@@ -2,34 +2,48 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <title>{{ config.title }}</title>
 
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/main.css">
+
+  <!-- Favicons -->
   <link rel="icon" href="/icons/favicons/laptop_32.ico" sizes="any">
   <link rel="icon" href="/icons/laptop.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icons/favicons/laptop_180_white_back.png">
   <link rel="manifest" href="app.webmanifest">
 
-  <link rel="stylesheet" href="/main.css">
+  <!-- Metrics -->
   <script defer data-domain="rose.codes" src="https://plausible.io/js/plausible.js"></script>
+  <script defer src="https://pingdat.io/dp1?t=mf20Zh375VTK2PkV&v=1"></script>
+
 </head>
 
 <body>
+
   <header>
+
     <h1 class="top_title">
       <a href="/">{{ config.title }}</a>
     </h1>
+
     <p class="top_description">{{ config.description }}</p>
+
     <nav class="top" itemscope itemtype="http://schema.org/SiteNavigationElement">
       <span {% if current_path == "/" %} class="active" {% endif %} ><a itemprop="url" href="/"><span itemprop="name">Home</span></a></span>
       <span {% if current_path == "/blog/" %} class="active" {% endif %} ><a itemprop="url" href="/blog"><span itemprop="name">Blog</span></a></span>
       <span {% if current_path == "/categories/" %} class="active" {% endif %} ><a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a></span>
       <span {% if current_path == "/tags/" %} class="active" {% endif %} ><a itemprop="url" href="/tags"><span itemprop="name">Tags</span></a></span>
     </nav>
+    
   </header>
+
   <section class="content">
     {% block content %} {% endblock %}
   </section>
+
   {% if page %}
     {% set this_year = page.year %}
   {% else %}
@@ -40,9 +54,12 @@
       {% endif %}
     {% endfor %}
   {% endif %}
+
   <p class="copyright"><small>&copy; {{ this_year }} <a href="/">Rose.Codes</a>. Part of the <a rel="noopener" target="_blank" href="https://www.endercode.com">Endercode</a> famliy.</small></p>
+
   <div class="left_background"></div>
   <div class="right_background"></div>
+
 </body>
 
 </html>
