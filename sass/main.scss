@@ -167,6 +167,12 @@ ul.terms {
   body {
     /*max-width: 52.7%;*/
     max-width: 67.1%;
+    .left_background {
+      width: calc((100% - 67.1%) / 2 + 1.5vw);
+    }
+    .right_background {
+      width: calc((100% - 67.1%) / 2);
+    }
   }
 }
 
