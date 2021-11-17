@@ -15,7 +15,7 @@ body {
   padding: 0 10px;
   max-width: 1000px;
   color: #222;
-  background-color: NavajoWhite;
+  background-color: FloralWhite;
 
   .left_background {
     width: calc((100% - 1040px) / 2 + 1.5vw);
@@ -120,7 +120,7 @@ p.top_description {
 
 nav.top {
   padding: 1em 0 2em;
-  border-bottom: 1em dotted #d7bfad;
+  border-bottom: 1em double #d7d0d5;
 }
 
 nav.pagination {
@@ -144,7 +144,7 @@ nav.pagination {
 .copyright {
   margin-top: 2em;
   padding-top: 1em;
-  border-top: 1em dotted #d7bfad;
+  border-top: 1em double #d7d0d5;
 }
 
 h2 {
