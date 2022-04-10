@@ -6,7 +6,7 @@ tags=["Maps","Random Generation","Videogame","Javascript","Rust"]
 categories=["Experiment"]
 +++
 
-This tool randomly generates an overworld map for a fictional JRPG game. It's graphics are 8-bit/16-bit era. A new map generated every time the page is refreshed. You can choose from two different map sizes.
+This tool randomly generates an overworld map for a fictional JRPG game. It's graphics are 8-bit/16-bit era. A new map generated every time the page is refreshed. You can choose from two different map sizes. They include grass, ocean, mountains, towns, castles, forest, desert, rivers, and even bridges!
 <!-- more -->
 [Check it out here](http://create.world/old_school).
 
