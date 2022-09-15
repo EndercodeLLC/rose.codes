@@ -5,7 +5,7 @@ date = 2016-01-27
 tags=["Music","Javascript"]
 categories=["Experiment"]
 +++
-
+ 
 Using data on standard pop chord progressions, choose a chord, Major or Minor scale, and step-number range, and get back a chord progression that should (in theory) sound decent.
 <!-- more -->
 [Try it out here.](https://www.rowlandrose.com/experiments/chord_progression_experiment/index.html)
