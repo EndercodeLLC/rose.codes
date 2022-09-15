@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>rose.codes</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/main.css">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/icons/favicons/laptop_32.ico" sizes="any">
+  <link rel="icon" href="/icons/laptop.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/favicons/laptop_180_white_back.png">
+  <link rel="manifest" href="app.webmanifest">
+
+  <!-- Metrics -->
+  <script defer data-domain="rose.codes" src="https://plausible.io/js/plausible.js"></script>
+  <script defer src="https://pingdat.io/dp1?t=mf20Zh375VTK2PkV&v=1"></script>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1 class="top_title">
+      <a href="/">rose.codes</a>
+    </h1>
+
+    <p class="top_description">Thoughts on everything. By a programmer.</p>
+
+    <nav class="top" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <span  ><a itemprop="url" href="/"><span itemprop="name">Home</span></a></span>
+      <span  ><a itemprop="url" href="/blog"><span itemprop="name">Blog</span></a></span>
+      <span  ><a itemprop="url" href="/categories"><span itemprop="name">Categories</span></a></span>
+      <span  ><a itemprop="url" href="/tags"><span itemprop="name">Tags</span></a></span>
+    </nav>
+    
+  </header>
+
+  <section class="content">
+    
+<h1 class="title">
+  Chord Progression Experiment
+</h1>
+<p class="subtitle"><strong>
+<span class="icon" style="background-image: url('/icons/clock.svg');"></span>
+ 4 minute read &nbsp; 
+<span class="icon" style="background-image: url('/icons/published.svg');"></span>
+ Published 2016-01-27</strong></p>
+<p>Using data on standard pop chord progressions, choose a chord, Major or Minor scale, and step-number range, and get back a chord progression that should (in theory) sound decent.</p>
+<span id="continue-reading"></span>
+<p><a rel="noopener" target="_blank" href="https://www.rowlandrose.com/experiments/chord_progression_experiment/index.html">Try it out here.</a></p>
+<p>Inspecting that page and looking at the HTML/JS should make this pretty self-explainatory, but here is the main Javascript:</p>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#c0c5ce;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#b48ead;">var </span><span style="color:#bf616a;">relative_notes </span><span>= {
+</span><span>  &#39;</span><span style="color:#a3be8c;">I</span><span>&#39; : </span><span style="color:#d08770;">0</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">i</span><span>&#39; : </span><span style="color:#d08770;">0</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bII</span><span>&#39; : </span><span style="color:#d08770;">1</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bii</span><span>&#39; : </span><span style="color:#d08770;">1</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">II</span><span>&#39; : </span><span style="color:#d08770;">2</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">ii</span><span>&#39; : </span><span style="color:#d08770;">2</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bIII</span><span>&#39; : </span><span style="color:#d08770;">3</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">biii</span><span>&#39; : </span><span style="color:#d08770;">3</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">III</span><span>&#39; : </span><span style="color:#d08770;">4</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">iii</span><span>&#39; : </span><span style="color:#d08770;">4</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">IV</span><span>&#39; : </span><span style="color:#d08770;">5</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">iv</span><span>&#39; : </span><span style="color:#d08770;">5</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bV</span><span>&#39; : </span><span style="color:#d08770;">6</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bv</span><span>&#39; : </span><span style="color:#d08770;">6</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">V</span><span>&#39; : </span><span style="color:#d08770;">7</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">v</span><span>&#39; : </span><span style="color:#d08770;">7</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bVI</span><span>&#39; : </span><span style="color:#d08770;">8</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bvi</span><span>&#39; : </span><span style="color:#d08770;">8</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">VI</span><span>&#39; : </span><span style="color:#d08770;">9</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">vi</span><span>&#39; : </span><span style="color:#d08770;">9</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bVII</span><span>&#39; : </span><span style="color:#d08770;">10</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">bvii</span><span>&#39; : </span><span style="color:#d08770;">10</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">VII</span><span>&#39; : </span><span style="color:#d08770;">11</span><span>,
+</span><span>  &#39;</span><span style="color:#a3be8c;">vii</span><span>&#39; : </span><span style="color:#d08770;">11</span><span>,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">note_letters </span><span>= [&#39;</span><span style="color:#a3be8c;">C</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">bD</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">D</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">bE</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">E</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">F</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">bG</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">G</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">bA</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">A</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">bB</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">B</span><span>&#39;];
+</span><span>
+</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_ruleset_html </span><span>= &#39;&#39;;
+</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_json </span><span>= {};
+</span><span>
+</span><span style="color:#bf616a;">$</span><span>.</span><span style="color:#8fa1b3;">getJSON</span><span>(&#39;</span><span style="color:#a3be8c;">chords.json</span><span>&#39;, </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">data</span><span>)
+</span><span>{
+</span><span>  </span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#msg</span><span>&#39;).</span><span style="color:#96b5b4;">append</span><span>(&#39;</span><span style="color:#a3be8c;">Read from chords.json</span><span>&#39;);
+</span><span>  </span><span style="color:#bf616a;">chord_json </span><span>= </span><span style="color:#bf616a;">data</span><span>;
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_ruleset </span><span>in </span><span style="color:#bf616a;">data</span><span>)
+</span><span>  {
+</span><span>    </span><span style="color:#65737e;">// This avoids going through inherited properties of the object
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">data</span><span>.</span><span style="color:#8fa1b3;">hasOwnProperty</span><span>(</span><span style="color:#bf616a;">chord_ruleset</span><span>)) 
+</span><span>    {
+</span><span>      </span><span style="color:#bf616a;">chord_ruleset_html </span><span>+= &#39;</span><span style="color:#a3be8c;">&lt;option value=&quot;</span><span>&#39;+</span><span style="color:#bf616a;">chord_ruleset</span><span>+&#39;</span><span style="color:#a3be8c;">&quot;&gt;</span><span>&#39;+</span><span style="color:#bf616a;">chord_ruleset</span><span>+&#39;</span><span style="color:#a3be8c;">&lt;/option&gt;</span><span>&#39;;
+</span><span>    }
+</span><span>  }
+</span><span>
+</span><span>  </span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#chord_ruleset</span><span>&#39;).</span><span style="color:#8fa1b3;">html</span><span>(</span><span style="color:#bf616a;">chord_ruleset_html</span><span>);
+</span><span>
+</span><span>});
+</span><span>
+</span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#gen_prog</span><span>&#39;).</span><span style="color:#96b5b4;">click</span><span>(</span><span style="color:#b48ead;">function</span><span>()
+</span><span>{
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">step_max </span><span>= </span><span style="color:#96b5b4;">parseInt</span><span>(</span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#chord_num_max</span><span>&#39;).</span><span style="color:#8fa1b3;">val</span><span>());
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">step_min </span><span>= </span><span style="color:#96b5b4;">parseInt</span><span>(</span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#chord_num_min</span><span>&#39;).</span><span style="color:#8fa1b3;">val</span><span>());
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">step_total </span><span>= Math.</span><span style="color:#96b5b4;">floor</span><span>( Math.</span><span style="color:#96b5b4;">random</span><span>() * ( ( </span><span style="color:#bf616a;">step_max </span><span>- </span><span style="color:#bf616a;">step_min </span><span>) + </span><span style="color:#d08770;">1 </span><span>) ) + </span><span style="color:#bf616a;">step_min</span><span>;
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">current_step </span><span>= </span><span style="color:#d08770;">1</span><span>;
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_prog </span><span>= [];
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">danger_chords </span><span>= [];
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">current_chord </span><span>= &#39;&#39;;
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_data </span><span>= </span><span style="color:#bf616a;">chord_json</span><span>[</span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#chord_ruleset</span><span>&#39;).</span><span style="color:#8fa1b3;">val</span><span>()];
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">key_root </span><span>= </span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#key_root</span><span>&#39;).</span><span style="color:#8fa1b3;">val</span><span>();
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// Danger chords: Chords that only lead to root chord. Make sure to avoid these until at the appropriate count away from end.
+</span><span>  </span><span style="color:#65737e;">// Also, don&#39;t make second to last chord the root note. Unless allowing repeat chords.
+</span><span>
+</span><span>  </span><span style="color:#65737e;">// Find danger chords
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">count </span><span>= </span><span style="color:#d08770;">1</span><span>;
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">root_chord </span><span>= &#39;&#39;;
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord </span><span>in </span><span style="color:#bf616a;">chord_data</span><span>)
+</span><span>  {
+</span><span>    </span><span style="color:#65737e;">// This avoids going through inherited properties of the object
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">chord_data</span><span>.</span><span style="color:#8fa1b3;">hasOwnProperty</span><span>(</span><span style="color:#bf616a;">chord</span><span>)) 
+</span><span>    {
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">count </span><span>== </span><span style="color:#d08770;">1</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">root_chord </span><span>= </span><span style="color:#bf616a;">chord</span><span>;
+</span><span>        </span><span style="color:#b48ead;">break</span><span>;
+</span><span>      }
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">chord</span><span>].length == </span><span style="color:#d08770;">1 </span><span>&amp;&amp; </span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">chord</span><span>][</span><span style="color:#d08770;">0</span><span>] == </span><span style="color:#bf616a;">root_chord</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">danger_chords</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">chord</span><span>);
+</span><span>      }
+</span><span>      </span><span style="color:#bf616a;">count</span><span>++;
+</span><span>    }
+</span><span>  }
+</span><span>
+</span><span>  </span><span style="color:#bf616a;">chord_prog</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">root_chord</span><span>);
+</span><span>  </span><span style="color:#bf616a;">current_step</span><span>++;
+</span><span>  </span><span style="color:#bf616a;">current_chord </span><span>= </span><span style="color:#bf616a;">root_chord</span><span>;
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#bf616a;">current_step </span><span>&lt;= </span><span style="color:#bf616a;">step_total</span><span>)
+</span><span>  {
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">safe_chords </span><span>= [];
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">i </span><span>= </span><span style="color:#d08770;">0</span><span>; </span><span style="color:#bf616a;">i </span><span>&lt; </span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">current_chord</span><span>].length; </span><span style="color:#bf616a;">i</span><span>++)
+</span><span>    {
+</span><span>      </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">possible_chord </span><span>= </span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">current_chord</span><span>][</span><span style="color:#bf616a;">i</span><span>];
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">step_total </span><span>== </span><span style="color:#bf616a;">current_step</span><span>)
+</span><span>      {
+</span><span>        </span><span style="color:#65737e;">// Only allow chords with ability to go to root chord
+</span><span>        </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">safe </span><span>= </span><span style="color:#d08770;">false</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">j </span><span>= </span><span style="color:#d08770;">0</span><span>; </span><span style="color:#bf616a;">j </span><span>&lt; </span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">possible_chord</span><span>].length; </span><span style="color:#bf616a;">j</span><span>++)
+</span><span>        {
+</span><span>          </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">chord_data</span><span>[</span><span style="color:#bf616a;">possible_chord</span><span>][</span><span style="color:#bf616a;">j</span><span>] == </span><span style="color:#bf616a;">root_chord</span><span>) {
+</span><span>            </span><span style="color:#bf616a;">safe </span><span>= </span><span style="color:#d08770;">true</span><span>;
+</span><span>          }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">safe</span><span>) {
+</span><span>          </span><span style="color:#bf616a;">safe_chords</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">possible_chord</span><span>);
+</span><span>        }
+</span><span>      }
+</span><span>      </span><span style="color:#b48ead;">else if</span><span>(</span><span style="color:#bf616a;">step_total </span><span>- </span><span style="color:#bf616a;">current_step </span><span>== </span><span style="color:#d08770;">1</span><span>)
+</span><span>      {
+</span><span>        </span><span style="color:#65737e;">// Don&#39;t allow danger chords
+</span><span>        </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">danger </span><span>= </span><span style="color:#d08770;">false</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">j </span><span>= </span><span style="color:#d08770;">0</span><span>; </span><span style="color:#bf616a;">j </span><span>&lt; </span><span style="color:#bf616a;">danger_chords</span><span>.length; </span><span style="color:#bf616a;">j</span><span>++)
+</span><span>        {
+</span><span>          </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">possible_chord </span><span>== </span><span style="color:#bf616a;">danger_chords</span><span>[</span><span style="color:#bf616a;">j</span><span>]) {
+</span><span>            </span><span style="color:#bf616a;">danger </span><span>= </span><span style="color:#d08770;">true</span><span>;
+</span><span>          }
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(!</span><span style="color:#bf616a;">danger</span><span>) {
+</span><span>          </span><span style="color:#bf616a;">safe_chords</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">possible_chord</span><span>);
+</span><span>        }
+</span><span>      }
+</span><span>      </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#bf616a;">safe_chords</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">possible_chord</span><span>);
+</span><span>      }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chosen_chord </span><span>= </span><span style="color:#bf616a;">safe_chords</span><span>[Math.</span><span style="color:#96b5b4;">floor</span><span>(Math.</span><span style="color:#96b5b4;">random</span><span>() * </span><span style="color:#bf616a;">safe_chords</span><span>.length)];
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">chord_prog</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">chosen_chord</span><span>);
+</span><span>    </span><span style="color:#bf616a;">current_step</span><span>++;
+</span><span>    </span><span style="color:#bf616a;">current_chord </span><span>= </span><span style="color:#bf616a;">chosen_chord</span><span>;
+</span><span>  }
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">output_html </span><span>= &#39;</span><span style="color:#a3be8c;">&lt;p&gt;Step total: </span><span>&#39; + </span><span style="color:#bf616a;">step_total </span><span>+ &#39;</span><span style="color:#a3be8c;">, Chord progression: </span><span>&#39;;
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">i </span><span>= </span><span style="color:#d08770;">0</span><span>; </span><span style="color:#bf616a;">i </span><span>&lt; </span><span style="color:#bf616a;">chord_prog</span><span>.length; </span><span style="color:#bf616a;">i</span><span>++)
+</span><span>  {
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">i </span><span>&gt; </span><span style="color:#d08770;">0</span><span>) {
+</span><span>      </span><span style="color:#bf616a;">output_html </span><span>+= &#39;</span><span style="color:#a3be8c;"> &amp;rarr; </span><span>&#39;;
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">chord_arr </span><span>= </span><span style="color:#bf616a;">chord_prog</span><span>[</span><span style="color:#bf616a;">i</span><span>].</span><span style="color:#96b5b4;">split</span><span>(&#39;</span><span style="color:#a3be8c;">_</span><span>&#39;);
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">new_chord_num </span><span>= </span><span style="color:#bf616a;">relative_notes</span><span>[</span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">0</span><span>]];
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">new_chord </span><span>= &#39;&#39;;
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">suffix_1 </span><span>= &#39;&#39;;
+</span><span>    </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">suffix_2 </span><span>= &#39;&#39;;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">key_root </span><span>== &#39;</span><span style="color:#a3be8c;">relative</span><span>&#39;) {
+</span><span>      </span><span style="color:#bf616a;">new_chord </span><span>= </span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">0</span><span>];
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">else
+</span><span>    {
+</span><span>      </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">offset </span><span>= </span><span style="color:#96b5b4;">parseInt</span><span>(</span><span style="color:#bf616a;">key_root</span><span>) + </span><span style="color:#bf616a;">new_chord_num</span><span>;
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">offset </span><span>&gt; </span><span style="color:#d08770;">11</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">offset </span><span>-= </span><span style="color:#d08770;">12</span><span>;
+</span><span>      }
+</span><span>      </span><span style="color:#bf616a;">new_chord </span><span>= </span><span style="color:#bf616a;">note_letters</span><span>[</span><span style="color:#bf616a;">offset</span><span>];
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">0</span><span>] == </span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">0</span><span>].</span><span style="color:#96b5b4;">toLowerCase</span><span>()) {
+</span><span>        </span><span style="color:#bf616a;">new_chord </span><span>= </span><span style="color:#bf616a;">new_chord</span><span>.</span><span style="color:#96b5b4;">toLowerCase</span><span>();
+</span><span>      }
+</span><span>    }
+</span><span>    </span><span style="color:#65737e;">// Suffix 1
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">new_chord</span><span>.</span><span style="color:#96b5b4;">charAt</span><span>(</span><span style="color:#d08770;">0</span><span>) == &#39;</span><span style="color:#a3be8c;">b</span><span>&#39; &amp;&amp; </span><span style="color:#bf616a;">new_chord</span><span>.</span><span style="color:#96b5b4;">charAt</span><span>(</span><span style="color:#d08770;">1</span><span>) != &#39;&#39; ) {
+</span><span>      </span><span style="color:#bf616a;">new_chord </span><span>= </span><span style="color:#bf616a;">new_chord</span><span>.</span><span style="color:#96b5b4;">substr</span><span>(</span><span style="color:#d08770;">1</span><span>);
+</span><span>      </span><span style="color:#bf616a;">suffix_1 </span><span>= &#39;</span><span style="color:#a3be8c;">&amp;#x266d;</span><span>&#39;;
+</span><span>    }
+</span><span>    </span><span style="color:#65737e;">// Suffix 2
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(typeof </span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">1</span><span>] !== &#39;</span><span style="color:#a3be8c;">undefined</span><span>&#39;) {
+</span><span>      </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">suffix_2 </span><span>= &#39;</span><span style="color:#a3be8c;">_</span><span>&#39;+</span><span style="color:#bf616a;">chord_arr</span><span>[</span><span style="color:#d08770;">1</span><span>];
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#bf616a;">suffix_2 </span><span>== &#39;</span><span style="color:#a3be8c;">_d</span><span>&#39;) {
+</span><span>        </span><span style="color:#bf616a;">suffix_2 </span><span>= &#39;</span><span style="color:#a3be8c;">&amp;deg;</span><span>&#39;;
+</span><span>      }
+</span><span>    }
+</span><span>    </span><span style="color:#bf616a;">output_html </span><span>+= </span><span style="color:#bf616a;">new_chord </span><span>+ </span><span style="color:#bf616a;">suffix_1 </span><span>+ </span><span style="color:#bf616a;">suffix_2</span><span>;
+</span><span>    
+</span><span>  }
+</span><span>  </span><span style="color:#bf616a;">output_html </span><span>+= &#39;</span><span style="color:#a3be8c;">&lt;/p&gt;</span><span>&#39;;
+</span><span>
+</span><span>  </span><span style="color:#8fa1b3;">$</span><span>(&#39;</span><span style="color:#a3be8c;">#chord_output</span><span>&#39;).</span><span style="color:#96b5b4;">append</span><span>(</span><span style="color:#bf616a;">output_html</span><span>);
+</span><span>});
+</span></code></pre>
+<p>No real reason I do this, but I have the chord information in a separate JSON file:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>
+</span><span>{
+</span><span>  &quot;</span><span style="color:#a3be8c;">Major</span><span>&quot; : {
+</span><span>    &quot;</span><span style="color:#a3be8c;">I</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">I</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">iii</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">I</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">V</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">I</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">I</span><span>&quot;
+</span><span>    ]
+</span><span>  },
+</span><span>  &quot;</span><span style="color:#a3be8c;">Minor</span><span>&quot; : {
+</span><span>    &quot;</span><span style="color:#a3be8c;">i</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">III</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iv</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">VI</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">bVII</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">i</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">III</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iv</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">VI</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">iv</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">i</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">V</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">i</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">VI</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">VI</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iv</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">vii_d</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">i</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">VI</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">bVII</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii_d</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">III</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iv</span><span>&quot;
+</span><span>    ]
+</span><span>  },
+</span><span>  &quot;</span><span style="color:#a3be8c;">Classical</span><span>&quot; : {
+</span><span>    &quot;</span><span style="color:#a3be8c;">I</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">iii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">iii</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">vii</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">V</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">vi</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">ii</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">IV</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">V</span><span>&quot;
+</span><span>    ],
+</span><span>    &quot;</span><span style="color:#a3be8c;">vii</span><span>&quot; : [
+</span><span>      &quot;</span><span style="color:#a3be8c;">I</span><span>&quot;
+</span><span>    ]
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>The main idea is that I define rules about which chords are allowed to progress to which chords, and I randomly choose which of these allowed chords to use.</p>
+<p>I based this off of some charts I found on chord progressions. I've lost the actual charts I used but they were something like the top charts on this <a rel="noopener" target="_blank" href="https://music.stackexchange.com/a/56662">StackExchange answer</a>.</p>
+
+
+  </section>
+
+  
+    
+  
+
+  <p class="copyright"><small>&copy; 2016 <a href="/">Rose.Codes</a>. Part of the <a rel="noopener" target="_blank" href="https://www.endercode.com">Endercode</a> famliy.</small></p>
+
+  <div class="left_background"></div>
+  <div class="right_background"></div>
+
+</body>
+
+</html>

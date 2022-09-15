@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>rose.codes - Videogame</title>
+	<subtitle>Thoughts on everything. By a programmer.</subtitle>
+	<link href="https://rose.codes/tags/videogame/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://rose.codes"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2019-01-20T00:00:00+00:00</updated>
+	<id>https://rose.codes/tags/videogame/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Create.World Map Generator</title>
+		<published>2019-01-20T00:00:00+00:00</published>
+		<updated>2019-01-20T00:00:00+00:00</updated>
+		<link href="https://rose.codes/blog/create-world/" type="text/html"/>
+		<id>https://rose.codes/blog/create-world/</id>
+		<content type="html">&lt;p&gt;This tool randomly generates an overworld map for a fictional JRPG game. It&#x27;s graphics are 8-bit&#x2F;16-bit era. A new map generated every time the page is refreshed. You can choose from two different map sizes. They include grass, ocean, mountains, towns, castles, forest, desert, rivers, and even bridges!&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;create.world&#x2F;old_school&quot;&gt;Check it out here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Here is the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rowlandrose&#x2F;create.world&quot;&gt;GitHub Page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are preview images of the kind of maps you can generate with this tool:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;jrpg&#x2F;map-1.png&quot; alt=&quot;Small version&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;jrpg&#x2F;map-2.png&quot; alt=&quot;Large version&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;And here is a sample closeup:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;jrpg&#x2F;closeup.png&quot; alt=&quot;Closeup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;update-2020-11-18&quot;&gt;Update 2020-11-18:&lt;&#x2F;h2&gt;
+&lt;p&gt;I re-coded the main part of this project in Rust, as a way to learn the language. It doesn&#x27;t generate quite as fast as I&#x27;d expect, but that could be due to the PNG library I used and&#x2F;or my beginner knowledge of Rust.&lt;&#x2F;p&gt;
+&lt;p&gt;See &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rowlandrose&#x2F;old_school_jrpg_map_generator&quot;&gt;GitHub page here&lt;&#x2F;a&gt;. Runs in command line.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;attributions&quot;&gt;Attributions&lt;&#x2F;h2&gt;
+&lt;p&gt;See github pages for all appropriate attribution information.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
